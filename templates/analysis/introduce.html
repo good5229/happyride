@@ -5,8 +5,26 @@
     {{ block.super }}
 {% endblock css %}
 {% block content %}
-    <h3>HappyRide를 소개하는 웹페이지입니다.</h3>
-
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <img src="{% static "image/taxi_icon.png" %}" style="height:128px;width:auto;"/>
+        </div>
+        <div class="my-5 text-align-center">
+            <h3>행복택시, 제대로 <b>운영</b>되고 있나요?</h3>
+        </div>
+        <div class="my-5">
+            <h3>행복택시 운영 </h3>
+            <p>택시 운영이 어쩌고 저쩌고 블라블라</p>
+        </div>
+        <div class="my-5">
+            <h3>전라북도의 행복택시</h3>
+            <p>송하진 전북도지사의 공약에 의하면 행복택시를 2022년까지 얼만큼 늘린다더라...</p>
+        </div>
+        <div class="my-5">
+            <h3>우리의 목표</h3>
+            <p>선행연구와 빅데이터 분석을 바탕으로, 행복택시 수요지수를 만들어서 이렇게 저렇게...</p>
+        </div>
+    </div>
 {% endblock %}
 {% block javascript %}
     {{ block.super }}
