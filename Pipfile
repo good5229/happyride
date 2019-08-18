@@ -8,6 +8,12 @@ name = "pypi"
 [packages]
 
 django = "*"
+scikit-learn = "*"
+scipy = "*"
+matplotlib = "*"
+scikit-image = "*"
+pandas = "*"
+pillow = "*"
 
 
 [dev-packages]
