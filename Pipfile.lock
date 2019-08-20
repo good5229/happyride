@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ef3e1a8e2a0632f4f43aaaf33a72728346521af53f721f62873745c9d3cb122d"
+            "sha256": "6ed6b5e959a80dcbf3a84096def1ee30e0c4fca3a036d9302eda1776444738d5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -37,6 +37,22 @@
             ],
             "index": "pypi",
             "version": "==2.2.4"
+        },
+        "django-model-utils": {
+            "hashes": [
+                "sha256:3f130a262e45d73e0950d2be76af4bf4ee86804dd60e5f90afc5cd948fcfe760",
+                "sha256:682f58c1de330cedcda58cc85d5232c5b47a9e2cb67bef4541fb43fdaeb18e96"
+            ],
+            "index": "pypi",
+            "version": "==3.2.0"
+        },
+        "gunicorn": {
+            "hashes": [
+                "sha256:aa8e0b40b4157b36a5df5e599f45c9c76d6af43845ba3b3b0efe2c70473c2471",
+                "sha256:fa2662097c66f920f53f70621c6c58ca4a3c4d3434205e608e121b5b3b71f4f3"
+            ],
+            "index": "pypi",
+            "version": "==19.9.0"
         },
         "imageio": {
             "hashes": [

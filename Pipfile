@@ -14,6 +14,8 @@ matplotlib = "*"
 scikit-image = "*"
 pandas = "*"
 pillow = "*"
+django-model-utils = "*"
+gunicorn = "*"
 
 
 [dev-packages]
