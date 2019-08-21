@@ -24,7 +24,8 @@ SECRET_KEY = 'e8zdk-6e+((q3jo_*5f7zuxu8gfw7u#ne*8hg*&4ut@(-!a5b+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', ]
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'happyride.codeeight.io', ]
 
 # Application definition
 
