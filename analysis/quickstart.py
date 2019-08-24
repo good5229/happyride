@@ -12,6 +12,15 @@ with open('./raw_data/train.csv', 'r', encoding='utf-8-sig') as fp:
         cols = list(map(fn, cols))
         csv.append(cols)
 
+jb_csv = []
+with open('./raw_data/test.csv', 'r', encoding='utf-8-sig') as fp:
+    for line in fp:
+        line = line.strip()
+        cols = line.split(',')
+        fn = lambda n: float(n) if re.match(r'^[0-9\.]+$', n) else n
+        cols = list(map(fn, cols))
+        jb_csv.append(cols)
+
 total_len = len(csv)
 train_len = int(total_len * 2 / 3)
 train_data = []
@@ -22,12 +31,14 @@ test_label = []
 for i in range(total_len):
     data = csv[i][0:38]
     label = csv[i][39]  # 일단은 운행횟수만 기록
-    if i < train_len:
-        train_data.append(data)
-        train_label.append(label)
-    else:
-        test_data.append(data)
-        test_label.append(label)
+    train_data.append(data)
+    train_label.append(label)
+
+for i in range(len(jb_csv)):
+    data = jb_csv[i][0:38]
+    label = jb_csv[i][0:38]
+    test_data.append(data)
+    test_label.append(label)
 
 for i in range(len(train_data)):
     for j in range(len(train_data[i])):
