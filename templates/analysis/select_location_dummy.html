@@ -1,0 +1,45 @@
+{% extends "../base.html" %}
+{% load static i18n %}
+
+{% block css %}
+    {{ block.super }}
+
+{% endblock css %}
+{% block content %}
+    <div class="container">
+        <div class="my-5 text-align-center">
+            <h3>행복택시 지역 선택</h3>
+        </div>
+        <div onclick="location.href='{% url 'analysis:svr' %}'">분석</div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div id="jeonju" class="my-1 btn btn-md btn-success">전주</div>
+                <div id="gunsan" class="my-1 btn btn-md btn-success">군산</div>
+                <div id="iksan" class="my-1 btn btn-md btn-success">익산</div>
+                <div id="gimje" class="my-1 btn btn-md btn-success">김제</div>
+                <div id="wanju" class="my-1 btn btn-md btn-success">완주</div>
+                <div id="buan" class="my-1 btn btn-md btn-success">부안</div>
+                <div id="jeongeup" class="my-1 btn btn-md btn-success">정읍</div>
+                <div id="gochang" class="my-1 btn btn-md btn-success">고창</div>
+                <div id="sunchang" class="my-1 btn btn-md btn-success">순창</div>
+                <div id="imsil" class="my-1 btn btn-md btn-success">임실</div>
+                <div id="muju" class="my-1 btn btn-md btn-success">무주</div>
+                <div id="jinan" class="my-1 btn btn-md btn-success">진안</div>
+                <div id="jangsu" class="my-1 btn btn-md btn-success">장수</div>
+                <div id="namwon" class="my-1 btn btn-md btn-success">남원</div>
+            </div>
+            <div class="col">
+                <object id="map" type="image/svg+xml" data="{% static "image/Map_Jeollabuk-do.svg" %}">현재 브라우저는 iframe을
+                    지원하지
+                    않습니다.
+                </object>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ block.super }}
+    <script>
+
+    </script>
+{% endblock javascript %}

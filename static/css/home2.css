@@ -1,0 +1,35 @@
+.nav {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-left: 100px;
+  width: 15%;
+  height: 200px;
+}
+.nav1 {
+  text-align: center;
+  vertical-align: center;
+  width: 300px;
+  height: 24%;
+  background-color: whitesmoke;
+  font-size: 180%;
+  font-family: 'Nanum Pen Script', cursive;
+}
+.nav2 {
+  text-align: center;
+  vertical-align: center;
+  width: 300px;
+  height: 24%;
+  background-color: #4b5f65;
+  font-size: 180%;
+  font-family: 'Nanum Pen Script', cursive;
+}
+.nav3 {
+  text-align: center;
+  vertical-align: center;
+  width: 300px;
+  height: 24%;
+  background-color: #4b5f65;
+  font-size: 180%;
+  font-family: 'Nanum Pen Script', cursive;
+}

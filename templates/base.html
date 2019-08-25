@@ -5,33 +5,49 @@
     <title>행복택시 정책개선 프로젝트, HappyRide</title>
     <meta charset="UTF-8">
     {% block css %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="{% static "image/favicon.ico" %}" type="image/x-icon">
         <link rel="icon" href="{% static "image/favicon.ico" %}" type="image/x-icon">
     {% endblock css %}
 </head>
 <body>
 {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static "image/logo.png" %}"
-                                                             style="height:35px;width:auto;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'analysis:intro' %}">HappyRide?</a>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1><b>Happy Ride</b></h1>
+        <p>전북 지역의 행복택시 운행 어쩌고</p>
+    </div>
+    <div class="nav_wrapper sticky-top" style="margin-bottom:50px; text-align: center; word-spacing: 100px;">
+        <nav class="menu">
+            <ul>
+                <li><a href="{% url 'analysis:intro' %}">Home</a></li>
+                <li>
+                    <a href="#">현황</a>
+                    <ul>
+                        <li><a href="{% url 'analysis:select_loc' %}" style="word-spacing: 0;">시군별 현황</a></li>
+                        <li>
+                            <a href="{% url 'analysis:select_loc' %}" style="word-spacing: 0;">운영지역 연락처</a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'analysis:select_loc' %}">행복택시 정책제안</a>
+                <li>
+                    <a href="#">수요예측</a>
+                    <ul>
+                        <li>
+                            <a href="{% url 'analysis:pre_user' %}" style="word-spacing: 0;">step1. 인원 수 예측</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'analysis:pre_eco' %}" style="word-spacing: 0;">step2. 경제성 파악</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'analysis:pre_bud' %}" style="word-spacing: 0;">step3. 예산 편성</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </div>
 {% endblock navbar %}
 {% block content %}
 
@@ -39,15 +55,10 @@
 
 
 {% block javascript %}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 {% endblock javascript %}
 </body>
 </html>
