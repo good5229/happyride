@@ -6,9 +6,46 @@
     <link rel="stylesheet" href="{% static 'css/home3.css' %}"/>
 {% endblock css %}
 {% block content %}
-    {{ city }}
-
-    {{ price }}
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="h3 mx-3">{{ city }} 지역 행복택시 1년 예상운행횟수량 :</div>
+            <div>{{ price }}회</div>
+        </div>
+        <table class="table my-5 text-center">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">조사방식</th>
+                <th scope="col">조사기간</th>
+                <th scope="col">조사지역</th>
+                <th scope="col">정확도</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>유선문의, 디지털 자료 수령</td>
+                <td>2019.01 - 2019.06</td>
+                <td>전국 행복택시 운행지역</td>
+                <td>약 90%</td>
+            </tr>
+            </tbody>
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">총 데이터량</th>
+                <th scope="col">조사기간</th>
+                <th scope="col">머신러닝 분석방식</th>
+                <th scope="col">정확도</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>100,256</td>
+                <td>2019.01 - 2019.06</td>
+                <td>전국 행복택시 운행지역</td>
+                <td>약 90%</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 {% block javascript %}
     {{ block.super }}
