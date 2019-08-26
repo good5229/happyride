@@ -33,17 +33,118 @@
     <span class="m" style="width:400px; position:absolute; right:350px;">
       <img id="map" class="map" src="{% static "image/Map_Jeollabuk-do.svg" %}"/>
     </span>
-
+    <table class="table table-striped" style="position:absolute; top:100%; width:100%; border: black solid 2px;">
+        <thead>
+        <tr style="background-color:black;">
+            <th scope="col" style="color:white;">도시</th>
+            <th scope="col" style="color:white;">전화번호</th>
+            <th scope="col" style="color:white;">부서</th>
+            <th scope="col" style="color:white;">담당직원</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">고창</th>
+            <td>063-560-2572</td>
+            <td>상생경제과</td>
+            <td>김현정</td>
+        </tr>
+        <tr>
+            <th scope="row">군산</th>
+            <td>063-454-3772</td>
+            <td>교통행정과</td>
+            <td>김철안</td>
+        </tr>
+        <tr>
+            <th scope="row">김제</th>
+            <td>063-540-3754</td>
+            <td>교통행정과</td>
+            <td>김종천</td>
+        </tr>
+        <tr>
+            <th scope="row">남원</th>
+            <td>063-620-6561</td>
+            <td>교통과</td>
+            <td>서규광</td>
+        </tr>
+        <tr>
+            <th scope="row">무주</th>
+            <td>063-320-2365</td>
+            <td>산업경제과</td>
+            <td>박현우</td>
+        </tr>
+        <tr>
+            <th scope="row">부안</th>
+            <td>063-580-4539</td>
+            <td>건설교통과</td>
+            <td>양재영</td>
+        </tr>
+        <tr>
+            <th scope="row">순창</th>
+            <td>063-650-1332</td>
+            <td>경제교통과</td>
+            <td>차대웅</td>
+        </tr>
+        <tr>
+            <th scope="row">완주</th>
+            <td>063-290-2803</td>
+            <td>도로교통과</td>
+            <td>전성옥</td>
+        </tr>
+        <tr>
+            <th scope="row">익산</th>
+            <td>063-859-55563</td>
+            <td>도로행정과</td>
+            <td>이훈재</td>
+        </tr>
+        <tr>
+            <th scope="row">임실</th>
+            <td>063-640-2575</td>
+            <td>경제교통과</td>
+            <td>나선영</td>
+        </tr>
+        <tr>
+            <th scope="row">장수군</th>
+            <td>063-350-2567</td>
+            <td>건설교통과</td>
+            <td>이진아</td>
+        </tr>
+        <tr>
+            <th scope="row">전주시덕진구</th>
+            <td>063-281-2542</td>
+            <td>시민교통과</td>
+            <td>윤선아</td>
+        </tr>
+        <tr>
+            <th scope="row">전주시완산구</th>
+            <td>063-281-2542</td>
+            <td>시민교통과</td>
+            <td>윤선아</td>
+        </tr>
+        <tr>
+            <th scope="row">정읍</th>
+            <td>063-539-5915</td>
+            <td>교통과</td>
+            <td>원유리</td>
+        </tr>
+        <tr>
+            <th scope="row">진안</th>
+            <td>063-430-2536</td>
+            <td>건설교통과</td>
+            <td>정길용</td>
+        </tr>
+        </tbody>
+    </table>
     <nav class="nav">
         <span class="nav1"><a style="color:black;">HappyRide</a></span>
-        <span class="nav2"
-        ><a href="#" style="color:white;">시군별 현황</a></span
-        >
-        <span class="nav3"
-        ><a href="#" style="color:white">운영지역 연락처</a></span
-        >
+        <span class="nav2"><a href="#" style="color:white">운영지역 연락처</a></span>
     </nav>
 {% endblock %}
 {% block javascript %}
     {{ block.super }}
+    <script>
+        $(window).load(function () {
+            $("#jinan").color("red");
+        });
+    </script>
 {% endblock javascript %}

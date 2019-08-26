@@ -8,13 +8,7 @@
 {% block content %}
     <div class="search">
       <span class="search1">
-        <input
-          id="output1"
-          placeholder="인원 수 예측"
-          style="align-items:center"
-        >
-
-        <form action="{% url 'analysis:pre_user' %}" accept-charset="utf-8" name="city_info" method="POST">
+        <form action="{% url 'analysis:result_user' %}" accept-charset="utf-8" name="city_info" method="GET">
             {% csrf_token %}
           <fieldset>
             <select name="city" style="border:black 3px solid; width:420px;">
@@ -51,7 +45,6 @@
         <span class="nav1"><a style="color:black;">HappyRide</a></span>
         <span class="nav2"><a href="{% url 'analysis:pre_user' %}" style="color:white;">인원 수 예측</a></span>
         <span class="nav3"><a href="{% url 'analysis:pre_eco' %}" style="color:black;">경제성 파악</a></span>
-        <span class="nav4"><a href="{% url 'analysis:pre_bud' %}" style="color:black;">예산 편성</a></span>
     </nav>
 {% endblock %}
 {% block javascript %}

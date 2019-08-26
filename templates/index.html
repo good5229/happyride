@@ -3,9 +3,26 @@
 
 {% block css %}
     {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/home2.css' %}"/>
 {% endblock css %}
 {% block content %}
+    <div style="display:flex;">
+        <div class="video" style="width:45%;">
+            <iframe
+                    style=" margin-left:10%; display:block; width:40vw; height: 50vh"
+                    src="https://www.youtube.com/embed/eeSfEHeXcj8"
+            ></iframe>
+        </div>
+        <div style="position:relative; right:-10%;">
+            <br> <br> <br>
+            <span style="position:relative; left:30%; top:10%; font-size:30px;">행복택시란?</span>
+            <br> <br> <br>
 
+            <span style="position:relative; left:20%;">시내버스 정류장이 평균 1km이상 </span>
+            <br><span style="position:relative; left:11%;">떨어진 교통소외지역에 거주하는 주민들에게 </span>
+            <br><span style=></span>이동권을 보장하기위해 이동수단을 제공하는 정책입니다.</span>
+        </div>
+    </div>
 {% endblock %}
 {% block javascript %}
     {{ block.super }}

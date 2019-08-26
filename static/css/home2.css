@@ -9,7 +9,7 @@
 .nav1 {
   text-align: center;
   vertical-align: center;
-  width: 300px;
+  width: 100%;
   height: 24%;
   background-color: whitesmoke;
   font-size: 180%;
@@ -18,7 +18,7 @@
 .nav2 {
   text-align: center;
   vertical-align: center;
-  width: 300px;
+  width: 100%;
   height: 24%;
   background-color: #4b5f65;
   font-size: 180%;
@@ -27,9 +27,17 @@
 .nav3 {
   text-align: center;
   vertical-align: center;
-  width: 300px;
+  width: 100%;
   height: 24%;
   background-color: #4b5f65;
   font-size: 180%;
   font-family: 'Nanum Pen Script', cursive;
 }
+
+.city{width:18%; position: absolute; top: 50%; left:40%; font-size:50%;}
+.cityA{width:100%;}
+.cityB{width:100%;}
+.cityC{width:100%;}
+
+.m{width:30%; position: absolute;; right:50px;}
+.map{width:100%;}
