@@ -18,7 +18,6 @@ class AreaModel(models.Model):
 class BasicFeatures(models.Model):
     class Meta:
         verbose_name = u'지역 기본자료'
-        ordering = ['name']
 
     name = models.ForeignKey(AreaModel, on_delete=models.CASCADE, verbose_name=u'지역명', max_length=256,
                              blank=True, null=True)
@@ -28,4 +27,16 @@ class BasicFeatures(models.Model):
     wage = models.IntegerField(verbose_name=u'요금', blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.name.name
+
+
+class Drive_Area(models.Model):
+    class Meta:
+        verbose_name = u'운영지역'
+
+    name = models.ForeignKey(AreaModel, on_delete=models.CASCADE, verbose_name=u'지역명', max_length=256,
+                             blank=True, null=True)
+    start_date = models.CharField(verbose_name=u'시작 시기', max_length=64, blank=True, null=True)
+    text = models.CharField(verbose_name=u'주요 특징', max_length=256, blank=True, null=True)
+    wage = models.IntegerField(verbose_name=u'요금', blank=True, null=True)
+    etc = models.CharField(verbose_name=u'기타 사항', max_length=256, blank=True, null=True)

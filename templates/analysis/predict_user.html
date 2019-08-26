@@ -11,9 +11,8 @@
         <form action="{% url 'analysis:result_user' %}" accept-charset="utf-8" name="city_info" method="GET">
             {% csrf_token %}
           <fieldset>
-            <select name="city" style="border:black 3px solid; width:420px;">
-              <optgroup label="jeonbuk">
-                <option value="search">원하는 지역을 선택해주세요</option>
+            <select name="city" class="form-control" style="border:black 3px solid; width:420px;">
+              <optgroup label="원하는 지역을 선택해주세요">
                 <option value="gochang">고창군</option>
                 <option value="gunsan">군산시</option>
                 <option value="gimje">김제시</option>
@@ -31,7 +30,7 @@
               </optgroup>
             </select>
             <input
-              class="click1"
+              class="btn btn-dark"
               type="submit"
               value="검색"
               style="width:420px;"

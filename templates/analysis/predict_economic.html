@@ -8,18 +8,19 @@
 {% block content %}
     <div class="search">
       <span class="search1">
-        <input
-                id="output1"
-                placeholder="인원 수 예측"
-                style="align-items:center"
-        ></input>
+
 
         <form action="{% url 'analysis:pre_eco' %}" accept-charset="utf-8" name="city_info" method="POST">
             {% csrf_token %}
+                    <input
+                            class="form-control"
+                            id="output1"
+                            placeholder="인원 수 예측"
+                            style="align-items:center"
+                    ></input>
           <fieldset>
-            <select name="city" style="border:black 3px solid; width:420px;">
-              <optgroup label="jeonbuk">
-                <option value="search">원하는 지역을 선택해주세요</option>
+            <select name="city" class="form-control" style="border:black 3px solid; width:420px;">
+              <optgroup label="원하는 지역을 선택해주세요">
                 <option value="gochang">고창군</option>
                 <option value="gunsan">군산시</option>
                 <option value="gimje">김제시</option>
@@ -37,7 +38,7 @@
               </optgroup>
             </select>
             <input
-                    class="click1"
+                    class="btn btn-dark"
                     type="submit"
                     value="검색"
                     style="width:420px;"
