@@ -4,14 +4,118 @@
 {% block css %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/home3.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"
+          integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous"/>
 {% endblock css %}
 {% block content %}
     <div class="container">
-        <div>{{ city }} 지역에 행복택시 정책을 시행할 경우 예상되는 비용은 {{ taxi_cost }}원 입니다.</div>
-        <div>반면, 버스를 증차할 경우 예상되는 비용은 {{ bus_cost }}원 입니다.</div>
-        <div>그러므로, {{ conclusion }}</div>
+        <div class="card">
+            <div class="card-header">
+                <h3>{{ city }} 지역 행복택시 정책 설정 가이드</h3>
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <div>{{ city }} 지역에 행복택시 정책을 시행할 경우 예상되는 비용은 <b>{{ taxi_cost_comma }}원</b> 입니다.</div>
+                    <div>반면, {{ bus_amount }}대 만큼 버스를 추가로 증차할 경우 예상되는 비용은 <b>{{ bus_cost_comma }}원</b> 입니다.</div>
+                </blockquote>
+            </div>
+        </div>
+        <div>
+            <canvas id="densityChart" style="width:80vw;height:70vh"></canvas>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Conclusion</h5>
+            <div class="card-body">
+                <h5 class="card-title">그러므로, {{ city }} 지역은 {{ conclusion }}</h5>
+                {% ifnotequal bus_simul null %}
+                    <p class="card-text">{{ bus_simul }}</p>
+                {% endifnotequal %}
+                <a href="{% url 'analysis:pre_eco' %}" class="btn btn-primary">돌아가기</a>
+            </div>
+        </div>
+        <div class="h2"></div>
+
     </div>
 {% endblock %}
 {% block javascript %}
     {{ block.super }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+            integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <script>
+        var densityCanvas = document.getElementById("densityChart");
+
+        Chart.defaults.global.defaultFontFamily = "Lato";
+        Chart.defaults.global.defaultFontSize = 16;
+
+        var taxi =
+        {{ taxi_cost }}
+        var bus =
+        {{ bus_cost }}
+        var max = 0
+        var min = 0
+        if (taxi > bus) {
+            max = taxi;
+            min = bus;
+        } else {
+            max = bus;
+            min = taxi;
+        }
+        var max_digit = max.toString().length;
+
+        var densityData = {
+            label: '운행 비용',
+            data: [taxi, bus],
+            backgroundColor: [
+                'rgba(255, 204, 204, 0.6)',
+                'rgba(30, 99, 132, 0.6)',
+
+            ],
+            borderColor: [
+                'rgba(255, 26, 26, 1)',
+                'rgba(30, 99, 132, 1)',
+            ],
+            borderWidth: 2,
+            hoverBorderWidth: 0
+        };
+
+        var chartOptions = {
+            scales: {
+                yAxes: [{
+                    barPercentage: 0.5,
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "black",
+                        zeroLineWidth: 2
+                    },
+                    ticks: {
+                        min: min * 0.9,
+                        max: max * 1.1,
+                        stepSize: 20000000
+                    },
+                    scaleLabel: {
+                        display: false,
+                        labelString: "택시 운행 비용"
+                    }
+                }]
+            },
+            elements: {
+                rectangle: {
+                    borderSkipped: 'left',
+                }
+            }
+        };
+
+        var barChart = new Chart(densityCanvas, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["택시 운행 비용", "버스 운행 비용"],
+                datasets: [densityData],
+            },
+            options: chartOptions
+        });
+    </script>
 {% endblock javascript %}
