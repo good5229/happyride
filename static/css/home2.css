@@ -1,34 +1,78 @@
 .nav {
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  margin-left: 100px;
-  width: 15%;
-  height: 200px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-left: 100px;
+    width: 15%;
+    height: 200px;
 }
+
 .nav1 {
-  text-align: center;
-  vertical-align: center;
-  width: 100%;
-  height: 24%;
-  background-color: whitesmoke;
-  font-size: 180%;
-  font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    vertical-align: center;
+    width: 100%;
+    height: 24%;
+    background-color: whitesmoke;
+    font-size: 180%;
+    font-family: 'Nanum Pen Script', cursive;
 }
+
 .nav2 {
-  text-align: center;
-  vertical-align: center;
-  width: 100%;
-  height: 24%;
-  background-color: #4b5f65;
-  font-size: 180%;
-  font-family: 'Nanum Pen Script', cursive;
+    text-align: center;
+    vertical-align: center;
+    width: 100%;
+    height: 24%;
+    background-color: #4b5f65;
+    font-size: 180%;
+    font-family: 'Nanum Pen Script', cursive;
 }
 
-.city{width:18%; position: absolute; top: 50%; left:40%; font-size:50%;}
-.cityA{width:100%;}
-.cityB{width:100%;}
-.cityC{width:100%;}
+.city {
+    width: 18%;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    font-size: 50%;
+}
 
-.m{width:30%; position: absolute;; right:50px;}
-.map{width:100%;}
+.cityA {
+    width: 100%;
+}
+
+.cityB {
+    width: 100%;
+}
+
+.cityC {
+    width: 100%;
+}
+
+.m {
+    width: 30%;
+    position: absolute;;
+    right: 50px;
+}
+
+.map {
+    width: 100%;
+}
+
+iframe {
+    width: 40vw;
+    height: 50vh
+}
+
+#index_text{
+    margin-left:25%;
+}
+
+@media (max-width: 800px) {
+    iframe {
+        width: 80vw;
+        height: 40vh;
+    }
+
+    #index_text{
+    margin-left:15%;
+}
+}
