@@ -102,7 +102,7 @@ class Result_User(TemplateView):
             city_object = AreaModel.objects.filter(name=city).first()
             forecast_user = city_object.frequency_value * 1.82
             context = {'city': city, 'forecast_drive': city_object.frequency_value,
-                       'forecast_user': round(forecast_user, 3)}
+                       'forecast_user': round(forecast_user)}
 
             return render(request, template_name='analysis/result_user.html', context=context)
 
