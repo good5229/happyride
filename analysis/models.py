@@ -25,6 +25,7 @@ class BasicFeatures(models.Model):
     distance = models.FloatField(verbose_name=u'거리', blank=True, null=True)
     frequency = models.IntegerField(verbose_name=u'운행횟수', blank=True, null=True)
     wage = models.IntegerField(verbose_name=u'요금', blank=True, null=True)
+    outside_people = models.IntegerField(verbose_name=u'벽지노선 인구', blank=True, nul=True)
 
     def __str__(self):
         return self.name.name

@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
 
-from analysis.models import AreaModel, Drive_Area
+from analysis.models import AreaModel, Drive_Area, BasicFeatures
 
 
 class Introduce(TemplateView):
@@ -55,7 +55,8 @@ class Drive_AreaView(DetailView):
         print(city)
 
         object = Drive_Area.objects.filter(name__name=city).first()
-        context = {'city': city, 'start_date': object.start_date, 'wage': object.wage, 'text':object.text, 'etc':object.etc}
+        context = {'city': city, 'start_date': object.start_date, 'wage': object.wage, 'text': object.text,
+                   'etc': object.etc}
         return render(request, template_name='analysis/detail.html', context=context)
 
 
@@ -100,7 +101,8 @@ class Result_User(TemplateView):
 
             city_object = AreaModel.objects.filter(name=city).first()
             forecast_user = city_object.frequency_value * 1.82
-            context = {'city': city, 'forecast_drive': city_object.frequency_value, 'forecast_user': round(forecast_user,3)}
+            context = {'city': city, 'forecast_drive': city_object.frequency_value,
+                       'forecast_user': round(forecast_user, 3)}
 
             return render(request, template_name='analysis/result_user.html', context=context)
 
@@ -111,6 +113,11 @@ class Result_Economic(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.method == 'GET':
             city = request.GET['city']
+            population = request.GET['population']
+            normal_wage = request.GET['normal_wage']
+            happy_wage = request.GET['happy_wage']
+            bus = request.GET['bus']
+
             if city == "gunsan":
                 city = "군산"
             elif city == "iksan":
@@ -141,3 +148,28 @@ class Result_Economic(TemplateView):
                 city = "진안"
 
             city_object = AreaModel.objects.filter(name=city).first()
+            basic_feature = BasicFeatures.objects.filter(name=city_object).first()
+            var_1_1 = population / basic_feature.outside_people * city_object.frequency_value * normal_wage - happy_wage
+            var_2_1 = 60000000 * bus
+            if var_1_1 > var_2_1:
+                # 택시 비용이 더 큰 경우
+                benifit = var_1_1 - var_2_1
+                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit
+                           'conclusion': '버스를 이용하는 것이 더 합리적입니다.'}
+
+                return render(request, template_name='analysis/result_economic.html', context=context)
+            elif var_2_1 > var_1_1:
+                # 버스 비용이 더 큰 경우
+                benifit = var_2_1 - var_1_1
+                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit
+                           'conclusion': '택시를 이용하는 것이 더 합리적입니다.'}
+
+                return render(request, template_name='analysis/result_economic.html', context=context)
+            else:
+                # 두 비용이 같은 경우
+                benifit = var_2_1 - var_1_1
+                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit
+                           'conclusion': '비용적으로 차이가 없습니다. 다른 요인을 고려해야 합니다.'}
+
+                return render(request, template_name='analysis/result_economic.html', context=context)
+

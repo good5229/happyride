@@ -10,14 +10,33 @@
       <span class="search1">
 
 
-        <form action="{% url 'analysis:pre_eco' %}" accept-charset="utf-8" name="city_info" method="POST">
+        <form action="{% url 'analysis:pre_eco' %}" accept-charset="utf-8" name="city_info" method="GET">
             {% csrf_token %}
+              <div class="form-row">
+                <div class="col">
+                  <input type="text" class="form-control" name="normal_wage" placeholder="평균적인 택시 요금"
+                         style="border:black 3px solid;">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" name="happy_wage" placeholder="행복택시 이용료"
+                         style="border:black 3px solid;">
+                </div>
+              </div>
+            <div class="form-row">
+                <div class="col">
+                  <input type="text" class="form-control" name="population" placeholder="마을별 인구"
+                         style="border:black 3px solid;">
+                </div>
+                <div class="col">
                     <input
                             class="form-control"
-                            id="output1"
-                            placeholder="인원 수 예측"
-                            style="align-items:center"
+                            name="bus"
+                            placeholder="해당 지역 버스 수"
+                            style="align-items:center;border:black 3px solid;"
                     >
+                </div>
+            </div>
+
           <fieldset>
             <select name="city" class="form-control" style="border:black 3px solid; width:420px;">
               <optgroup label="원하는 지역을 선택해주세요">
