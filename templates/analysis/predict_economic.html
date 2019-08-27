@@ -18,22 +18,23 @@
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" name="normal_wage" placeholder="평균적인 택시 요금"
+                            <input type="number" class="form-control" name="normal_wage" placeholder="평균적인 택시 요금"
                                    style="border:black 3px solid;" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" name="happy_wage" placeholder="행복택시 이용료"
+                            <input type="number" class="form-control" name="happy_wage" placeholder="행복택시 이용료"
                                    style="border:black 3px solid;" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" name="population" placeholder="마을별 인구"
+                            <input type="number" class="form-control" name="population" placeholder="마을별 인구"
                                    style="border:black 3px solid;" required>
                         </div>
                         <div class="col">
                             <input
                                     class="form-control"
+                                    type="number"
                                     name="bus"
                                     placeholder="해당 지역 버스 수"
                                     style="align-items:center;border:black 3px solid;"

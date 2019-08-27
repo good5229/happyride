@@ -1,4 +1,5 @@
 # Create your views here.
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
 
@@ -117,7 +118,6 @@ class Result_Economic(TemplateView):
             normal_wage = int(request.GET['normal_wage'])
             happy_wage = int(request.GET['happy_wage'])
             bus = int(request.GET['bus'])
-
             if city == "gunsan":
                 city = "군산"
             elif city == "iksan":
@@ -150,7 +150,8 @@ class Result_Economic(TemplateView):
             city_object = AreaModel.objects.filter(name=city).first()
             basic_feature = BasicFeatures.objects.filter(name=city_object).first()
             var_1_1 = round(
-                population / basic_feature.outside_people * city_object.frequency_value * (normal_wage - happy_wage))
+                population / basic_feature.outside_people * city_object.frequency_value * (
+                        normal_wage - happy_wage) * 6)
             var_2_1 = round(60000000 * bus)
 
             if var_1_1 > var_2_1:
