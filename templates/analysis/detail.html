@@ -7,11 +7,38 @@
 
 {% endblock css %}
 {% block content %}
-    {{ city }}
-    {{ start_date }}
-    {{ text }}
-    {{ wage }}
-    {{ etc }}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <td class="table-dark text-center">지역명</td>
+                    <td>{{ city }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark text-center">시작일자</td>
+                    <td>{{ start_date }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark text-center">주요 사항</td>
+                    <td>{{ text }}</td>
+                </tr>
+                <tr>
+                    <td class="table-dark text-center">요금</td>
+                    <td>{{ wage }}</td>
+                </tr>
+                {% ifnotequal etc null %}
+                    <tr>
+                        <td class="table-info">기타</td>
+                        <td>{{ etc }}</td>
+                    </tr>
+                {% endifnotequal %}
+            </table>
+        </div>
+
+
+
+
+    </div>
 {% endblock %}
 {% block javascript %}
     {{ block.super }}

@@ -6,7 +6,7 @@ from analysis.models import AreaModel, BasicFeatures, Drive_Area
 
 @admin.register(AreaModel)
 class AreaModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'frequency_value')
+    list_display = ('id', 'name', 'frequency_value')
 
 
 @admin.register(BasicFeatures)

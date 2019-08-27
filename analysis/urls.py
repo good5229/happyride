@@ -12,5 +12,5 @@ urlpatterns = [
     path('predict_economic/', Predict_Economic.as_view(), name='pre_eco'),
     path('result_user/', Result_User.as_view(), name='result_user'),
     path('result_economic/', Result_Economic.as_view(), name='result_eco'),
-    path('detail', Drive_AreaView.as_view(), name='detail'),
+    path('detail/', Drive_AreaView.as_view(), name='detail'),
 ]
