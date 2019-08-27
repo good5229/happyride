@@ -151,7 +151,7 @@ class Result_Economic(TemplateView):
             basic_feature = BasicFeatures.objects.filter(name=city_object).first()
             var_1_1 = round(
                 population / basic_feature.outside_people * city_object.frequency_value * (
-                        normal_wage - happy_wage) * 6)
+                        normal_wage - happy_wage) * 6+30000000)
             var_2_1 = round(60000000 * bus)
 
             if var_1_1 > var_2_1:
