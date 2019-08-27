@@ -157,36 +157,41 @@ class Result_Economic(TemplateView):
                 # 택시 비용이 더 큰 경우
                 benifit = var_1_1 - var_2_1
                 bus_simul = bus
+                bus_original = bus
+
                 for bus_simul in range(1000):
                     if round(60000000 * bus_simul) < var_1_1:
                         bus_simul += 1
                     else:
                         break
 
-                context = {'city': city, 'bus_amount': bus, 'taxi_cost': var_1_1,
+                context = {'city': city, 'bus_amount': bus_original, 'taxi_cost': var_1_1,
                            'taxi_cost_comma': format(var_1_1, ","),
                            'bus_cost': var_2_1, 'bus_cost_comma': format(var_2_1, ","),
                            'benifit': benifit,
                            'conclusion': '버스를 이용하는 것이 더 합리적입니다.',
-                           'bus_simul': "버스를 " + str(bus_simul-bus) + "대 추가 배차한다면, 택시를 이용하는 것이 더 합리적일 수 있습니다."}
+                           'bus_simul': "버스를 " + str(bus_simul - bus) + "대 추가 배차한다면, 택시를 이용하는 것이 더 합리적일 수 있습니다."}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
             elif var_2_1 > var_1_1:
                 # 버스 비용이 더 큰 경우
                 benifit = var_2_1 - var_1_1
                 bus_simul = bus
+                bus_original = bus
+                bus_decrease = 0
                 for bus in range(bus_simul, 0, -1):
                     if round(60000000 * bus_simul) > var_1_1:
                         bus_simul -= 1
+                        bus_decrease += 1
                     else:
                         break
 
-                context = {'city': city, 'bus_amount': bus, 'taxi_cost': var_1_1,
+                context = {'city': city, 'bus_amount': bus_original, 'taxi_cost': var_1_1,
                            'taxi_cost_comma': format(var_1_1, ","),
                            'bus_cost': var_2_1, 'bus_cost_comma': format(var_2_1, ","),
                            'benifit': benifit,
                            'conclusion': '택시를 이용하는 것이 더 합리적입니다.',
-                           'bus_simul': "버스를 " + str(bus_simul) + " 대 감차한다면, 버스를 이용하는 것이 더 합리적일 수 있습니다."}
+                           'bus_simul': "버스를 " + str(bus_decrease) + " 대 감차한다면, 버스를 이용하는 것이 더 합리적일 수 있습니다."}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
             else:
