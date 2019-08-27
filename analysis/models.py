@@ -21,10 +21,6 @@ class BasicFeatures(models.Model):
 
     name = models.ForeignKey(AreaModel, on_delete=models.CASCADE, verbose_name=u'지역명', max_length=256,
                              blank=True, null=True)
-    bus_amount = models.IntegerField(verbose_name=u'시내버스 대수', blank=True, null=True)
-    distance = models.FloatField(verbose_name=u'거리', blank=True, null=True)
-    frequency = models.IntegerField(verbose_name=u'운행횟수', blank=True, null=True)
-    wage = models.IntegerField(verbose_name=u'요금', blank=True, null=True)
     outside_people = models.IntegerField(verbose_name=u'벽지노선 인구', blank=True, null=True)
 
     def __str__(self):

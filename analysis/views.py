@@ -113,10 +113,10 @@ class Result_Economic(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.method == 'GET':
             city = request.GET['city']
-            population = request.GET['population']
-            normal_wage = request.GET['normal_wage']
-            happy_wage = request.GET['happy_wage']
-            bus = request.GET['bus']
+            population = int(request.GET['population'])
+            normal_wage = int(request.GET['normal_wage'])
+            happy_wage = int(request.GET['happy_wage'])
+            bus = int(request.GET['bus'])
 
             if city == "gunsan":
                 city = "군산"
@@ -149,8 +149,10 @@ class Result_Economic(TemplateView):
 
             city_object = AreaModel.objects.filter(name=city).first()
             basic_feature = BasicFeatures.objects.filter(name=city_object).first()
-            var_1_1 = population / basic_feature.outside_people * city_object.frequency_value * normal_wage - happy_wage
-            var_2_1 = 60000000 * bus
+            var_1_1 = round(
+                population / basic_feature.outside_people * city_object.frequency_value * normal_wage - happy_wage)
+            var_2_1 = round(60000000 * bus)
+            print(var_1_1, var_2_1)
             if var_1_1 > var_2_1:
                 # 택시 비용이 더 큰 경우
                 benifit = var_1_1 - var_2_1
@@ -172,4 +174,3 @@ class Result_Economic(TemplateView):
                            'conclusion': '비용적으로 차이가 없습니다. 다른 요인을 고려해야 합니다.'}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
-

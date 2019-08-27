@@ -11,7 +11,7 @@ class AreaModelAdmin(admin.ModelAdmin):
 
 @admin.register(BasicFeatures)
 class BasicFeaturesAdmin(admin.ModelAdmin):
-    list_display = ('name', 'bus_amount', 'distance', 'frequency', 'wage')
+    list_display = ('name', 'outside_people')
 
 
 @admin.register(Drive_Area)

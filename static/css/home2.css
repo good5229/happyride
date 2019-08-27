@@ -1,5 +1,5 @@
 .nav {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
@@ -10,8 +10,8 @@
     font-family: 'Nanum Pen Script', cursive;
 }
 
-button{
-    margin-bottom:5px;
+button {
+    margin-bottom: 5px;
 }
 
 .nav2 {
@@ -25,7 +25,7 @@ button{
 }
 
 .m {
-    width:30%;
+    width: 30%;
 }
 
 .map {
@@ -37,8 +37,15 @@ iframe {
     height: 50vh
 }
 
-#index_text{
-    margin-left:25%;
+#index_text {
+    margin-left: 15%;
+}
+
+.index_title{
+    font-size:36px;
+}
+.index_content{
+    font-size:20px;
 }
 
 @media (max-width: 800px) {
@@ -47,23 +54,33 @@ iframe {
         height: 40vh;
     }
 
-    #index_text{
-    margin-left:15%;
+    #index_text {
+        margin-left: 15%;
     }
 
-    .nav{
-        display:flex;
-        justify-content:center;
+    .index_title{
+        font-size:24px;
+    }
+    .index_content{
+        font-size:16px;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: center;
         align-items: flex-start;
         width: 100%;
     }
-    .nav1{
-        width:100%;
+
+    .nav1 {
+        width: 100%;
     }
-    .nav2{
-        width:100%;
+
+    .nav2 {
+        width: 100%;
     }
-    .m{
-        width:100%;
+
+    .m {
+        width: 100%;
     }
 }
