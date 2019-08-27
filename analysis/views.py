@@ -154,21 +154,21 @@ class Result_Economic(TemplateView):
             if var_1_1 > var_2_1:
                 # 택시 비용이 더 큰 경우
                 benifit = var_1_1 - var_2_1
-                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit
+                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit,
                            'conclusion': '버스를 이용하는 것이 더 합리적입니다.'}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
             elif var_2_1 > var_1_1:
                 # 버스 비용이 더 큰 경우
                 benifit = var_2_1 - var_1_1
-                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit
+                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit,
                            'conclusion': '택시를 이용하는 것이 더 합리적입니다.'}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
             else:
                 # 두 비용이 같은 경우
                 benifit = var_2_1 - var_1_1
-                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit
+                context = {'city': city, 'taxi_cost': var_1_1, 'bus_cost': var_2_1, 'benifit': benifit,
                            'conclusion': '비용적으로 차이가 없습니다. 다른 요인을 고려해야 합니다.'}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
