@@ -150,13 +150,13 @@ class Result_Economic(TemplateView):
             city_object = AreaModel.objects.filter(name=city).first()
             basic_feature = BasicFeatures.objects.filter(name=city_object).first()
             var_1_1 = round(
-                population / basic_feature.outside_people * city_object.frequency_value * normal_wage - happy_wage)
+                population / basic_feature.outside_people * city_object.frequency_value * (normal_wage - happy_wage))
             var_2_1 = round(60000000 * bus)
 
             if var_1_1 > var_2_1:
                 # 택시 비용이 더 큰 경우
                 benifit = var_1_1 - var_2_1
-                bus_simul = int(bus)
+                bus_simul = bus
                 for bus_simul in range(1000):
                     if round(60000000 * bus_simul) < var_1_1:
                         bus_simul += 1
@@ -168,20 +168,21 @@ class Result_Economic(TemplateView):
                            'bus_cost': var_2_1, 'bus_cost_comma': format(var_2_1, ","),
                            'benifit': benifit,
                            'conclusion': '버스를 이용하는 것이 더 합리적입니다.',
-                           'bus_simul': "버스를 " + str(bus_simul) + " 대 추가로 배차한다면, 택시를 이용하는 것이 더 합리적일 수 있습니다."}
+                           'bus_simul': "버스를 " + str(bus_simul-bus) + "대 추가 배차한다면, 택시를 이용하는 것이 더 합리적일 수 있습니다."}
 
                 return render(request, template_name='analysis/result_economic.html', context=context)
             elif var_2_1 > var_1_1:
                 # 버스 비용이 더 큰 경우
                 benifit = var_2_1 - var_1_1
                 bus_simul = bus
-                for bus_simul in range(1000):
+                for bus in range(bus_simul, 0, -1):
                     if round(60000000 * bus_simul) > var_1_1:
                         bus_simul -= 1
                     else:
                         break
 
-                context = {'city': city, 'bus_amount': bus, 'taxi_cost': var_1_1, 'taxi_cost_comma': format(var_1_1, ","),
+                context = {'city': city, 'bus_amount': bus, 'taxi_cost': var_1_1,
+                           'taxi_cost_comma': format(var_1_1, ","),
                            'bus_cost': var_2_1, 'bus_cost_comma': format(var_2_1, ","),
                            'benifit': benifit,
                            'conclusion': '택시를 이용하는 것이 더 합리적입니다.',
@@ -191,7 +192,8 @@ class Result_Economic(TemplateView):
             else:
                 # 두 비용이 같은 경우
                 benifit = var_2_1 - var_1_1
-                context = {'city': city, 'bus_amount': bus, 'taxi_cost': var_1_1, 'taxi_cost_comma': format(var_1_1, ","),
+                context = {'city': city, 'bus_amount': bus, 'taxi_cost': var_1_1,
+                           'taxi_cost_comma': format(var_1_1, ","),
                            'bus_cost': var_2_1, 'bus_cost_comma': format(var_2_1, ","),
                            'benifit': benifit,
                            'conclusion': '비용적으로 차이가 없습니다. 다른 요인을 고려해야 합니다.'}
